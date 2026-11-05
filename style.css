@@ -1,0 +1,544 @@
+
+/* ==========================================
+   Day 3 - QuizQuest Final CSS
+   Dark Mode, Light Mode and Responsive Design
+========================================== */
+
+
+/* Day 3: Light Mode Variables */
+
+:root {
+    --background: linear-gradient(135deg, #667eea, #764ba2);
+    --card-background: #ffffff;
+    --text-color: #333333;
+    --secondary-text: #777777;
+    --primary-color: #764ba2;
+    --primary-hover: #5c3787;
+    --border-color: #dddddd;
+    --option-background: #f9f9ff;
+    --option-hover: #f0ebff;
+    --score-background: #f0ebff;
+    --review-background: #fafafa;
+    --success-background: #d4edda;
+    --success-text: #155724;
+    --error-background: #f8d7da;
+    --error-text: #721c24;
+    --warning-background: #fff3cd;
+    --warning-text: #856404;
+}
+
+
+/* Day 3: Dark Mode Variables */
+
+:root[data-theme="dark"] {
+    --background: linear-gradient(135deg, #141e30, #243b55);
+    --card-background: #1f2937;
+    --text-color: #f1f5f9;
+    --secondary-text: #cbd5e1;
+    --primary-color: #a78bfa;
+    --primary-hover: #8b5cf6;
+    --border-color: #475569;
+    --option-background: #273449;
+    --option-hover: #374151;
+    --score-background: #312e81;
+    --review-background: #273449;
+    --success-background: #14532d;
+    --success-text: #bbf7d0;
+    --error-background: #7f1d1d;
+    --error-text: #fecaca;
+    --warning-background: #713f12;
+    --warning-text: #fde68a;
+}
+
+
+/* Day 3: Basic Reset */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Day 3: Hidden Elements */
+
+[hidden] {
+    display: none !important;
+}
+
+
+/* Day 3: Body */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    min-height: 100vh;
+    color: var(--text-color);
+    padding: 20px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+
+/* Day 3: Header */
+
+.header {
+    max-width: 850px;
+    margin: 0 auto 30px;
+    color: white;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.brand h1 {
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+.brand p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+
+/* Day 3: Theme Toggle */
+
+.theme-toggle {
+    padding: 12px 18px;
+    border: 2px solid white;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+
+/* Day 3: Main Container */
+
+.container {
+    max-width: 750px;
+    margin: auto;
+}
+
+
+/* Day 3: Quiz and Result Cards */
+
+.quiz-card,
+.result-card {
+    background: var(--card-background);
+    color: var(--text-color);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+
+/* Day 3: Quiz Top */
+
+.quiz-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.quiz-label {
+    color: var(--primary-color);
+    font-size: 13px;
+    font-weight: bold;
+}
+
+#questionCount {
+    color: var(--secondary-text);
+    font-size: 14px;
+}
+
+
+/* Day 3: Progress Bar */
+
+.progress-container {
+    width: 100%;
+    height: 8px;
+    background: var(--border-color);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+
+/* Day 3: Question */
+
+#questionText {
+    font-size: 24px;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+
+/* Day 3: Answer Options */
+
+.answer-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.answer-btn {
+    width: 100%;
+    padding: 15px;
+    text-align: left;
+    font-size: 16px;
+    line-height: 1.5;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    background: var(--option-background);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.answer-btn:hover:not(:disabled) {
+    border-color: var(--primary-color);
+    background: var(--option-hover);
+    transform: translateY(-2px);
+}
+
+
+/* Day 3: Correct and Wrong Answers */
+
+.answer-btn.correct {
+    background: var(--success-background);
+    border-color: #28a745;
+    color: var(--success-text);
+}
+
+.answer-btn.wrong {
+    background: var(--error-background);
+    border-color: #dc3545;
+    color: var(--error-text);
+}
+
+.answer-btn:disabled {
+    cursor: not-allowed;
+}
+
+
+/* Day 3: Keyboard Tip */
+
+.keyboard-info {
+    margin-top: 18px;
+    font-size: 13px;
+    color: var(--secondary-text);
+    line-height: 1.5;
+}
+
+
+/* Day 3: Next Button */
+
+.next-btn {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 12px;
+    background: var(--primary-color);
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.next-btn:hover:not(:disabled) {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+.next-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+/* Day 3: Result Screen */
+
+.result-card {
+    text-align: center;
+}
+
+.result-icon {
+    font-size: 60px;
+    margin-bottom: 15px;
+}
+
+.result-card > h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.result-subtitle {
+    color: var(--secondary-text);
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+
+/* Day 3: Score Box */
+
+.score-box {
+    background: var(--score-background);
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+}
+
+.score-box h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+#finalScore {
+    font-size: 40px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+#scorePercentage {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: var(--text-color);
+}
+
+
+/* Day 3: Encouraging Message */
+
+.encouraging-message {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+
+/* Day 3: Restart Button */
+
+.restart-btn {
+    padding: 15px 25px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.restart-btn:hover {
+    background: #4f63d8;
+    transform: scale(1.03);
+}
+
+
+/* Day 3: Review Section */
+
+.review-section {
+    margin-top: 40px;
+    text-align: left;
+}
+
+.review-section h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 25px;
+}
+
+.review-subtitle {
+    text-align: center;
+    color: var(--secondary-text);
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+
+/* Day 3: Review List */
+
+.review-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.review-item {
+    padding: 18px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    background: var(--review-background);
+}
+
+.review-item h3 {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.review-item p {
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 5px;
+    overflow-wrap: anywhere;
+}
+
+
+/* Day 3: Review Status */
+
+.review-correct {
+    border-left: 5px solid #28a745;
+}
+
+.review-wrong {
+    border-left: 5px solid #dc3545;
+}
+
+.review-unanswered {
+    border-left: 5px solid #f0ad4e;
+}
+
+.review-status {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+.review-correct .review-status {
+    background: var(--success-background);
+    color: var(--success-text);
+}
+
+.review-wrong .review-status {
+    background: var(--error-background);
+    color: var(--error-text);
+}
+
+.review-unanswered .review-status {
+    background: var(--warning-background);
+    color: var(--warning-text);
+}
+
+
+/* Day 3: Footer */
+
+.footer {
+    text-align: center;
+    color: white;
+    margin-top: 30px;
+    font-size: 14px;
+}
+
+
+/* Day 3: Tablet Responsive Design */
+
+@media screen and (max-width: 768px) {
+
+    .header-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .brand h1 {
+        font-size: 32px;
+    }
+
+}
+
+
+/* Day 3: Mobile Responsive Design */
+
+@media screen and (max-width: 600px) {
+
+    body {
+        padding: 12px;
+    }
+
+    .header {
+        margin-bottom: 20px;
+    }
+
+    .brand h1 {
+        font-size: 30px;
+    }
+
+    .brand p {
+        font-size: 14px;
+    }
+
+    .quiz-card,
+    .result-card {
+        padding: 20px;
+        border-radius: 16px;
+    }
+
+    #questionText {
+        font-size: 20px;
+    }
+
+    .answer-btn {
+        font-size: 15px;
+        padding: 13px;
+    }
+
+    .quiz-top {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .result-card > h2 {
+        font-size: 25px;
+    }
+
+    #finalScore {
+        font-size: 32px;
+    }
+
+    .score-box {
+        padding: 20px;
+    }
+
+    .review-item {
+        padding: 14px;
+    }
+
+    .theme-toggle {
+        font-size: 14px;
+    }
+
+}

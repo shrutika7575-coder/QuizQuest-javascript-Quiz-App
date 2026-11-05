@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>QuizQuest - JavaScript Quiz App</title>
+
+    <!-- Day 3: Connecting CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Day 3: Connecting JavaScript -->
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Day 3: Header -->
+    <header class="header">
+
+        <div class="header-content">
+
+            <div class="brand">
+                <h1>🎯 QuizQuest</h1>
+                <p>Challenge your knowledge and have fun!</p>
+            </div>
+
+            <!-- Day 3: Dark / Light Mode Toggle -->
+            <button id="themeToggle" class="theme-toggle" type="button">
+                🌙 Dark Mode
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- Day 3: Main Container -->
+    <main class="container">
+
+        <!-- Day 3: Quiz Screen -->
+        <section class="quiz-card" id="quizScreen">
+
+            <div class="quiz-top">
+
+                <span class="quiz-label">
+                    WEB DEVELOPMENT QUIZ
+                </span>
+
+                <span id="questionCount">
+                    Question 1 of 10
+                </span>
+
+            </div>
+
+            <!-- Day 3: Progress Bar -->
+            <div class="progress-container">
+
+                <div class="progress-bar" id="progressBar"></div>
+
+            </div>
+
+            <!-- Day 3: Question -->
+            <h2 id="questionText">
+                Loading Question...
+            </h2>
+
+            <!-- Day 3: Answer Options -->
+            <div class="answer-options" id="answerOptions"></div>
+
+            <!-- Day 3: Keyboard Shortcuts -->
+            <p class="keyboard-info">
+                💡 Press 1–4 to select an answer and Enter to continue.
+            </p>
+
+            <!-- Day 3: Next Button -->
+            <button id="nextBtn" class="next-btn" disabled type="button">
+                Next Question →
+            </button>
+
+        </section>
+
+
+        <!-- Day 3: Result Screen -->
+        <section class="result-card" id="resultScreen" hidden>
+
+            <div class="result-icon">🏆</div>
+
+            <h2>Quiz Completed!</h2>
+
+            <p class="result-subtitle">
+                You have successfully completed the quiz.
+            </p>
+
+            <!-- Day 3: Final Score -->
+            <div class="score-box">
+
+                <h3>Your Final Score</h3>
+
+                <p id="finalScore">0 / 10</p>
+
+                <p id="scorePercentage">0%</p>
+
+            </div>
+
+            <!-- Day 3: Encouraging Message -->
+            <p id="encouragingMessage" class="encouraging-message">
+                Great Job!
+            </p>
+
+            <!-- Day 3: Restart Button -->
+            <button id="restartBtn" class="restart-btn" type="button">
+                🔄 Restart Quiz
+            </button>
+
+            <!-- Day 3: Answer Review -->
+            <div class="review-section">
+
+                <h2>📋 Answer Review</h2>
+
+                <p class="review-subtitle">
+                    Review your answers and learn from your mistakes.
+                </p>
+
+                <div id="reviewList" class="review-list"></div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Day 3: Footer -->
+    <footer class="footer">
+
+        <p>Made with ❤️ | QuizQuest</p>
+
+    </footer>
+
+</body>
+
+</html>
